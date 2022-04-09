@@ -1,0 +1,384 @@
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure, 
+picture
+{
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-weight: 400;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  width: 100%;   
+  display: block; 
+}
+
+/* Remove list styles on ul, 
+ol elements, which suggests default styling will be removed */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* ------------------- */
+/* Custom properties   */
+/* ------------------- */
+:root{
+/* colors */
+--clr-dark: 29, 9%, 5%;
+--clr-light: 235, 0%, 90%;
+--clr-lighter: 235, 0%, 40%;
+--clr-white: 0 0% 100%;
+
+/* font-sizes */
+    --fs-900: 9.375rem;
+    --fs-800: 6.25rem;
+    --fs-700: 3.5rem;
+    --fs-600: 2rem;
+    --fs-500: 1.75rem;
+    --fs-400: 1.125rem;
+    --fs-300: 1rem;         /*16px*/
+    --fs-200: 0.875rem;     /*14px*/
+
+/* font-families */
+    --ff-sans-room: 'Roboto', sans-serif;
+}
+/* Set up the body */
+body{
+  font-family: var(--ff-sans-room);
+  font-size: var(--fs-200);
+  color: hsl(var(--clr-light));
+
+  background-color: hsl(var(--clr-white));
+  line-height: 1.5;
+  /* min-height: 100vh; */
+ 
+
+  overflow-x: hidden; /*skrivamo skroll bar kad smanjimo ekran*/  
+  
+  display: grid;
+  place-content: center; 
+}
+
+/* ------------------- */
+/* Utility classes     */
+/* ------------------- */
+.flex {
+  display: flex;
+}
+
+.mobile-nav-toggle{
+  display: none;
+}
+
+/* ------------------- */
+/* Compontents         */
+/* ------------------- */
+
+
+/* primary-header */
+.logo{
+  display: block;
+  margin-inline: 4rem;
+  font-size: var(--fs-400);
+}
+
+.primary-header{   
+  position: relative;
+}
+
+.primary-header img {  
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;  
+}
+
+.pos_apsolute{
+  display: flex;
+  position: absolute;
+  align-items: center;
+  height: 5rem;
+  inset: 0% 0% 0% 0%;
+}
+
+.primary-navigation{
+  align-items: center;
+  gap: clamp(1rem, 2vw, 4rem);
+  /* width: 100vw; */
+  height: 3rem; 
+  margin: 0;
+  padding: 0;
+}
+
+.primary-navigation a{
+  text-decoration: none;
+  color: hsl(var(--clr-light));
+}
+
+.primary-navigation li:hover{
+    border-bottom: solid hsl(var(--clr-light)) 2px;      
+}
+
+.underline-indicators > a{
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.flow > * + * {
+  margin-top: var(--flow-spacer, 1em); /*omogučuje gornju marginu svakom paragrafu osim sliki i imenu*/
+}
+
+main article{
+  color: hsl(var(--clr-lighter));
+  padding: 2rem 3rem 2rem 3rem;
+
+}
+
+.center_article{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.article_pos{
+  position: relative;
+}
+
+.picture img{
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.picture img.active{
+  opacity: 1;
+}
+
+.angle_arrow_left{
+  position: absolute;
+  height: 5rem;
+  aspect-ratio: 1/1;
+  background-color: black;  
+  background-image: url(images/icon-angle-left.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  left: 0;
+  bottom: 0;
+}
+.angle_arrow_right{
+  position: absolute;
+  height: 5rem;
+  aspect-ratio: 1/1;
+  background-color: black;    
+  background-image: url(images/icon-angle-right.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  bottom: 0;
+  left: 5rem;
+}
+
+.angle_arrow_left:hover,
+.angle_arrow_right:hover{ 
+  background-color:rgb(95, 95, 95);
+}
+
+
+.title{
+  color: hsl(var(--clr-dark));
+  font-weight: bold;
+}
+
+.shop{
+  display: flex;  
+  align-items: center;
+  justify-content: center;
+  --flow-spacer: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.arrow{
+  width: max-content ;
+}
+
+.shop a{
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: hsl(var(--clr-dark));
+  margin-right: 2rem;
+}
+
+.sr-only {
+  position: absolute; 
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px; 
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}
+
+/* ----------------------------- */
+/* Layout                        */
+/* ----------------------------- */
+
+.grid-container{
+  display: grid;
+  margin-inline: 0;  
+}
+
+
+/* ----------------------------- */
+/*Media query                    */
+/* ----------------------------- */
+
+@media (max-width: 35rem){
+  .pos_apsolute{
+    z-index: 1000;
+    flex-direction: column;
+  }
+
+  .logo{
+    position: absolute;
+    top: 0.95rem;
+    z-index: -1;
+  }
+
+  .primary-navigation a{
+    color:hsl(var(--clr-dark));
+  }
+
+  .primary-navigation{
+    background-color: hsl(var(--clr-white));    
+    justify-content: center;
+    transform: translateY(-100%);
+    transition: transform 500ms ease-in-out;
+  }
+
+  .primary-navigation[data-visible="true"]{
+    transform: translateY(0);
+  }
+
+  .mobile-nav-toggle{
+    display: block;
+    position: absolute;
+    z-index: 2000;
+    left: 0.5rem;
+    top: 0.75rem;
+    background-image: url(images/icon-hamburger.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 1.5rem;
+    aspect-ratio: 1;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .mobile-nav-toggle[aria-expanded="true"]{
+    background-image: url(images/icon-close.svg);
+  }  
+
+  .mobile-nav-toggle:focus-visible{    
+    outline: 2px solid hsl(var(--clr-dark));
+    outline-offset: 1px;
+  }
+}
+
+
+.grid-container{
+grid-template-areas: 
+    'nav'
+    'title'
+    'pics_dark'
+    'title_bottom'
+    'pics_light';
+
+    grid-template-rows: max(300px) 0.75fr repeat(2, auto);
+  }
+
+.primary-header{
+  grid-area: nav;  
+}
+
+.article_pos{
+  grid-area: title;
+}
+
+.pics_dark{
+  grid-area: pics_dark;
+}
+
+.article_bottom{
+  grid-area: title_bottom;
+}
+
+.pics_light{
+  grid-area: pics_light;
+}
+
+
+@media (min-width: 45em){
+  .grid-container{
+    grid-template-areas: 
+    "nav nav title title"
+    "pics_dark title_bottom title_bottom pics_light";
+    grid-template-columns: 1fr 1fr 0.35fr 1fr;
+    grid-template-rows: 30rem auto;
+  }
+}
+
+@media(max-width: 45em){
+  .angle_arrow_left{
+    top: -5rem;
+    left: auto;
+    right: 5rem;
+  }
+  .angle_arrow_right{
+    top: -5rem;
+    left: auto;
+    right: 0;
+  }
+}
