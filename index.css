@@ -128,7 +128,7 @@ body{
 
 .primary-header img {  
   height: 100%;
-  object-fit: cover;
+  object-fit:cover;
   object-position: top left;  
 }
 
@@ -296,6 +296,7 @@ main article{
     justify-content: center;
     transform: translateY(-100%);
     transition: transform 500ms ease-in-out;
+    padding-inline: 1em;
   }
 
   .primary-navigation[data-visible="true"]{
@@ -336,7 +337,7 @@ grid-template-areas:
     'title_bottom'
     'pics_light';
 
-    grid-template-rows: max(300px) 0.75fr repeat(2, auto);
+    grid-template-rows: max(25rem) 0.75fr repeat(2, auto);
   }
 
 .primary-header{
