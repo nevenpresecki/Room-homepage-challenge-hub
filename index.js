@@ -4,6 +4,8 @@ const arrowLeft = document.getElementsByClassName("angle_arrow_left");
 const arrowRight = document.getElementsByClassName("angle_arrow_right");
 const picture = document.querySelectorAll(".picture img");
 const article = document.querySelectorAll(".article article")
+const media = window.matchMedia("(max-width: 30rem)")
+
 
 function toogleImage (){
     let visiblity = nav.getAttribute("data-visible");
@@ -72,6 +74,42 @@ function prevSlide() {
     }    
 }
 
+function keyDown(event){     
+    if(event.keyCode == 37){       
+        prevSlide();
+    }
+    if(event.keyCode == 39){       
+        nextSlide();
+    }    
+}
+
+function autoplaySlider(){
+    autoPlayInterval = setInterval(nextSlide, 6000);
+}
+
+function pauseSliderAutoplay(){
+    clearInterval (autoPlayInterval);  
+}
+
+function checkBreakpoint(){
+    
+    if(media.matches == true){
+        picture.forEach(x => change(x, "desktop", "mobile"));    
+    }else{
+        picture.forEach(x => change(x, "mobile", "desktop"));  
+    }
+
+    function change(x, befor, after){
+        x.setAttribute("src", x.src.replace(befor, after));    
+    }
+}
+
+
+addEventListener("keydown", keyDown);
+media.addListener(checkBreakpoint);
+autoplaySlider();
+document.querySelector(".picture").addEventListener("mouseout", autoplaySlider);
+document.querySelector(".picture").addEventListener("mouseover", pauseSliderAutoplay);
 navToggle[0].addEventListener("click", toogleImage);
 arrowRight[0].addEventListener("click", nextSlide);
 arrowLeft[0].addEventListener("click", prevSlide);
